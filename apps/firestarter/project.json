@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/firestarter",
         "index": "apps/firestarter/src/index.html",
@@ -17,7 +19,10 @@
           "apps/firestarter/src/favicon.ico",
           "apps/firestarter/src/assets"
         ],
-        "styles": ["apps/firestarter/src/styles.css"],
+        "styles": [
+          "apps/firestarter/src/custom-theme.scss",
+          "apps/firestarter/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -82,7 +87,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/firestarter"],
+      "outputs": [
+        "coverage/apps/firestarter"
+      ],
       "options": {
         "jestConfig": "apps/firestarter/jest.config.js",
         "passWithNoTests": true
