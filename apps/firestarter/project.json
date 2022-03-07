@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/firestarter",
         "index": "apps/firestarter/src/index.html",
@@ -17,7 +15,12 @@
         "tsConfig": "apps/firestarter/tsconfig.app.json",
         "assets": [
           "apps/firestarter/src/favicon.ico",
-          "apps/firestarter/src/assets"
+          "apps/firestarter/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/firestarter/app/assets",
+            "output": "assets"
+          }
         ],
         "styles": [
           "apps/firestarter/src/custom-theme.scss",
@@ -87,12 +90,20 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/firestarter"
-      ],
+      "outputs": ["coverage/apps/firestarter"],
       "options": {
         "jestConfig": "apps/firestarter/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "prerender": false,
+        "ssr": false,
+        "browserTarget": "firestarter:build:production",
+        "firebaseProject": "firestarter-firebase",
+        "firebaseHostingSite": "firestarter-firebase"
       }
     }
   },

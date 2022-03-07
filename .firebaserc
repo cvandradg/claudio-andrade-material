@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "firestarter-firebase": {
+      "hosting": {
+        "firestarter": [
+          "firestarter-firebase"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "firestarter-firebase"
+  }
+}

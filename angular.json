@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "firestarter": "apps/firestarter",
+    "firestarter-app": "libs/firestarter/app",
     "firestarter-e2e": "apps/firestarter-e2e"
   }
 }
