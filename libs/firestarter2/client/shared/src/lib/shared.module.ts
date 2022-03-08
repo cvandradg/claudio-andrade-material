@@ -19,7 +19,8 @@ import { ShellComponent } from './shell/shell.component';
 // import { DeleteButtonComponent } from './delete-button/delete-button.component';
 
 const components:any = [
-  // ShellComponent, DeleteButtonComponent
+  ShellComponent, 
+  // DeleteButtonComponent
 ];
 
 const modules = [
