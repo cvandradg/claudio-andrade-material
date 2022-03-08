@@ -3,6 +3,11 @@
   "projects": {
     "firestarter": "apps/firestarter",
     "firestarter-app": "libs/firestarter/app",
-    "firestarter-e2e": "apps/firestarter-e2e"
+    "firestarter-e2e": "apps/firestarter-e2e",
+    "firestarter2": "apps/firestarter2",
+    "firestarter2-client-kanban": "libs/firestarter2/client/kanban",
+    "firestarter2-client-shared": "libs/firestarter2/client/shared",
+    "firestarter2-client-user": "libs/firestarter2/client/user",
+    "firestarter2-e2e": "apps/firestarter2-e2e"
   }
 }
