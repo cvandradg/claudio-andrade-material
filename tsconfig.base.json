@@ -18,6 +18,9 @@
       "@material-workspace/firestarter/app": [
         "libs/firestarter/app/src/index.ts"
       ],
+      "@material-workspace/firestarter2/client/app": [
+        "libs/firestarter2/client/app/src/index.ts"
+      ],
       "@material-workspace/firestarter2/client/kanban": [
         "libs/firestarter2/client/kanban/src/index.ts"
       ],

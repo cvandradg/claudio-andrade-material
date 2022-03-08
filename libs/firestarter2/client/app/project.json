@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/firestarter2/client/app",
+  "sourceRoot": "libs/firestarter2/client/app/src",
+  "prefix": "material-workspace",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/firestarter2/client/app"],
+      "options": {
+        "jestConfig": "libs/firestarter2/client/app/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/firestarter2/client/app/src/**/*.ts",
+          "libs/firestarter2/client/app/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

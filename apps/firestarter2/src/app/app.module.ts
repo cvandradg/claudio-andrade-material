@@ -18,10 +18,18 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/module';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
+    RouterModule.forRoot([
+      {
+        path: '',
+        loadChildren: () => import('@material-workspace/firestarter2/client/app').then(module => module.AppUIModule)
+      }
+    ]),
     BrowserModule,
     SharedModule,
     FormsModule,
