@@ -14,9 +14,6 @@ export class SnackService {
       duration: 5000,
     });
 
-    console.log('is null?,', this.snackBar);
-    this.router.navigate(['/login']);
-
     this.snackBar._openedSnackBarRef
       ?.afterOpened()
       .pipe(tap(() => this.router.navigate(['/login'])))

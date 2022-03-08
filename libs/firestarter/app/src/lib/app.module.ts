@@ -8,6 +8,10 @@ import { GoogleSigninDirective } from './google-signin/google-signin.directive';
 import { EmailLoginComponent } from './email-login/email-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
+import { BoardListComponent } from './board-list/board-list.component';
+import { BoardComponent } from './board/board.component';
+import { BoardDialogComponent } from './board-dialog/board-dialog.component';
+import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 
 @NgModule({
   imports: [
@@ -18,14 +22,20 @@ import { AuthGuard } from './auth.guard';
     RouterModule.forChild([
       {
         path: '',
-        pathMatch: 'full',
         component: HomePageComponent,
-        canActivate: [AuthGuard],
       },
       {
         path: 'login',
         loadChildren: () =>
           import('./user/user.module').then((module) => module.UserModule),
+      },
+      {
+        path: 'kanban',
+        loadChildren: () =>
+          import('./kanban/kanban.module').then(
+            (module) => module.KanbanModule
+          ),
+        // canActivate: [AuthGuard],
       },
     ]),
   ],
@@ -34,6 +44,10 @@ import { AuthGuard } from './auth.guard';
     LoginPageComponent,
     GoogleSigninDirective,
     EmailLoginComponent,
+    BoardListComponent,
+    BoardComponent,
+    BoardDialogComponent,
+    TaskDialogComponent,
   ],
 })
 export class AppModule {}

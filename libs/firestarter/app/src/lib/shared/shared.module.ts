@@ -16,6 +16,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ShellComponent } from '../shell/shell.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 const components: any = [ShellComponent];
 
@@ -30,12 +33,14 @@ const modules = [
   MatMenuModule,
   MatIconModule,
   MatCardModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
   MatSnackBarModule,
   RouterModule,
   FormsModule,
   ReactiveFormsModule,
+  MatButtonToggleModule
 ];
 
 @NgModule({
