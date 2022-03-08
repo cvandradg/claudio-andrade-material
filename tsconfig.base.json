@@ -30,6 +30,10 @@
       "@material-workspace/firestarter2/client/user": [
         "libs/firestarter2/client/user/src/index.ts"
       ],
+      "@material-workspace/firestarter2/authGuard": [
+        "libs/firestarter2/client/user/src/lib/auth.guard.ts"
+      ],
+      
       "@shared/module": ["libs/firestarter/app/src/lib/shared/shared.module.ts"]
     }
   },
