@@ -1,14 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { BoardComponent } from './components/board/board.component';
+import { BoardsListComponent } from './components/boards-list/boards-list.component';
+import { BoardDialogComponent } from './dialogs/board-dialog/board-dialog.component';
+import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
+import { SharedModule } from '@shared/module';
+import { FormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   imports: [
     CommonModule,
-
     RouterModule.forChild([
-      /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
+      {path: '', component: BoardsListComponent}
     ]),
+    SharedModule,
+    FormsModule, 
+    DragDropModule,
+    MatDialogModule,
+    MatButtonToggleModule
+  ],
+  declarations: [
+    BoardComponent,
+    BoardsListComponent,
+    BoardDialogComponent,
+    TaskDialogComponent
   ],
 })
 export class KanbanModule {}
