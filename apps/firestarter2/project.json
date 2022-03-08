@@ -19,11 +19,13 @@
           "apps/firestarter2/src/assets",
           {
             "glob": "**/*",
-            "input": "libs/firestarter2/assets",
+            "input": "libs/firestarter2/assets/img",
             "output": "assets"
           }
         ],
-        "styles": ["apps/firestarter2/src/styles.scss"],
+        "styles": [
+          "libs/firestarter2/assets/styles/custome-theme.scss"
+        ],
         "scripts": []
       },
       "configurations": {
