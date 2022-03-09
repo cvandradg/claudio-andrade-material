@@ -23,9 +23,7 @@
             "output": "assets"
           }
         ],
-        "styles": [
-          "libs/firestarter2/assets/styles/custome-theme.scss"
-        ],
+        "styles": ["libs/firestarter2/assets/styles/custome-theme.scss"],
         "scripts": []
       },
       "configurations": {

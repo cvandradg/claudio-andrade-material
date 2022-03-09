@@ -15,9 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@material-workspace/firestarter/app": [
-        "libs/firestarter/app/src/index.ts"
-      ],
       "@material-workspace/firestarter2/authGuard": [
         "libs/firestarter2/client/user/src/lib/auth.guard.ts"
       ],

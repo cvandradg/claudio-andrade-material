@@ -1,9 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "firestarter": "apps/firestarter",
-    "firestarter-app": "libs/firestarter/app",
-    "firestarter-e2e": "apps/firestarter-e2e",
     "firestarter2": "apps/firestarter2",
     "firestarter2-client-app": "libs/firestarter2/client/app",
     "firestarter2-client-kanban": "libs/firestarter2/client/kanban",
