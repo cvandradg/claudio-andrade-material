@@ -26,7 +26,6 @@ const modules = [
   CommonModule,
   MatButtonModule,
   MatToolbarModule,
-  MatIconModule,
   LayoutModule,
   MatSidenavModule,
   MatListModule,

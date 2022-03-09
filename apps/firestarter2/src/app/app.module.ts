@@ -17,8 +17,9 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '@shared/module';
+
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '@material-workspace/firestarter2/client/shared';
 
 
 @NgModule({
