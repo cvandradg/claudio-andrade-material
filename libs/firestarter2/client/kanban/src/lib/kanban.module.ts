@@ -14,20 +14,18 @@ import { SharedModule } from '@material-workspace/firestarter2/client/shared';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild([
-      {path: '', component: BoardsListComponent}
-    ]),
+    RouterModule.forChild([{ path: '', component: BoardsListComponent }]),
     SharedModule,
-    FormsModule, 
+    FormsModule,
     DragDropModule,
     MatDialogModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
   ],
   declarations: [
     BoardComponent,
     BoardsListComponent,
     BoardDialogComponent,
-    TaskDialogComponent
+    TaskDialogComponent,
   ],
 })
 export class KanbanModule {}

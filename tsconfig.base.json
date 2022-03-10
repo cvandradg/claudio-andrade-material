@@ -29,7 +29,7 @@
       ],
       "@material-workspace/firestarter2/client/user": [
         "libs/firestarter2/client/user/src/index.ts"
-      ],
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

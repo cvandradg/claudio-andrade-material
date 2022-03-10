@@ -17,8 +17,7 @@ import { ShellComponent } from './shell/shell.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 const components: any = [ShellComponent];
 
@@ -39,7 +38,7 @@ const modules = [
   RouterModule,
   FormsModule,
   ReactiveFormsModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
 ];
 
 @NgModule({

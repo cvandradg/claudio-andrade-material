@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { environment } from '../environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
@@ -21,15 +20,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@material-workspace/firestarter2/client/shared';
 
-
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     RouterModule.forRoot([
       {
         path: '',
-        loadChildren: () => import('@material-workspace/firestarter2/client/app').then(module => module.AppUIModule)
-      }
+        loadChildren: () =>
+          import('@material-workspace/firestarter2/client/app').then(
+            (module) => module.AppUIModule
+          ),
+      },
     ]),
     BrowserModule,
     SharedModule,
