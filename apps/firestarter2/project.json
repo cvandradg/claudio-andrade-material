@@ -36,7 +36,7 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",
@@ -107,7 +107,7 @@
       "executor": "@angular-devkit/build-angular:server",
       "options": {
         "outputPath": "dist/apps/firestarter2/server",
-        "main": "apps/firestarter2/src/main.server.ts",
+        "main": "apps/firestarter2/server.ts",
         "tsConfig": "apps/firestarter2/tsconfig.server.json",
         "inlineStyleLanguage": "scss"
       },
@@ -125,6 +125,39 @@
           "optimization": false,
           "sourceMap": true,
           "extractLicenses": false
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "firestarter2:build:development",
+          "serverTarget": "firestarter2:server:development"
+        },
+        "production": {
+          "browserTarget": "firestarter2:build:production",
+          "serverTarget": "firestarter2:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@nguniversal/builders:prerender",
+      "options": {
+        "routes": [
+          "/"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "firestarter2:build:production",
+          "serverTarget": "firestarter2:server:production"
+        },
+        "development": {
+          "browserTarget": "firestarter2:build:development",
+          "serverTarget": "firestarter2:server:development"
         }
       },
       "defaultConfiguration": "production"
