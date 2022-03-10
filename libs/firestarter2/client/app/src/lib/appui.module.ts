@@ -25,13 +25,6 @@ import { AuthGuard } from '@material-workspace/firestarter2/authGuard';
           ),
         canActivate: [AuthGuard],
       },
-      {
-        path: 'customers',
-        loadChildren: () =>
-          import('@material-workspace/firestarter2/client/customers').then(
-            (m) => m.CustomersModule
-          ),
-      },
     ]),
   ],
   declarations: [HomePageComponent],
