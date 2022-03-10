@@ -171,6 +171,17 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
+"@angular-devkit/schematics@13.2.6":
+  version "13.2.6"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.2.6.tgz#c85778b73ede1fbcb6c3af7dde740cd0dc8bfb29"
+  integrity sha512-mPgSqdnZRuPSMeUA+T+mwVCrq2yhXpcYm1/Rjbhy09CyHs4wSrFv21WHCrE6shlvXpcmwr0n+I0DIeagAPmjUA==
+  dependencies:
+    "@angular-devkit/core" "13.2.6"
+    jsonc-parser "3.0.0"
+    magic-string "0.25.7"
+    ora "5.4.1"
+    rxjs "6.6.7"
+
 "@angular-eslint/bundled-angular-compiler@13.0.1":
   version "13.0.1"
   resolved "https://registry.npmjs.org/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-13.0.1.tgz"
@@ -341,6 +352,15 @@
   integrity sha512-/M8ZpBftXC6vXDpxop1mLfbkvP2naUHBJmMRAQkJMLN4UlZKP3J+yjC8CN8uzQx0Y6Zt3G+LrGdOWYD9IRXBvw==
   dependencies:
     tslib "^2.3.0"
+
+"@angular/platform-server@~13.2.0":
+  version "13.2.6"
+  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-13.2.6.tgz#5bf391ff4a53ef478907303dd9cf277af12ac9e6"
+  integrity sha512-UkcPfQxbwws93XVDvMGdNzFJIbdiwVhkibwDjHfwj4Sp9MoWutkeEFShGgG/bIJUy4f6RmCBOS6+gP5qx3uaMQ==
+  dependencies:
+    domino "^2.1.2"
+    tslib "^2.3.0"
+    xhr2 "^0.2.0"
 
 "@angular/router@~13.2.0":
   version "13.2.5"
@@ -2126,6 +2146,11 @@
     "@nguniversal/common" "13.0.1"
     tslib "^2.3.0"
 
+"@nguniversal/module-map-ngfactory-loader@^8.2.6":
+  version "8.2.6"
+  resolved "https://registry.yarnpkg.com/@nguniversal/module-map-ngfactory-loader/-/module-map-ngfactory-loader-8.2.6.tgz#0edc07c4437566970392c9bca1d13b8964971cb0"
+  integrity sha512-YcxXSrDZt6iDR+YbesJvprNpHd1nRLeThJwAFlcwvK/GVGSyKeWV6eqk3bRkBkgkw8OwaG/4lOQ4aofxQw+13w==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -2399,7 +2424,7 @@
     "@nrwl/linter" "13.8.5"
     "@nrwl/node" "13.8.5"
 
-"@nrwl/node@13.8.5":
+"@nrwl/node@13.8.5", "@nrwl/node@^13.8.5":
   version "13.8.5"
   resolved "https://registry.yarnpkg.com/@nrwl/node/-/node-13.8.5.tgz#435a8d42de4eb2577ac48fa8299ac6aaffa7e02a"
   integrity sha512-W+Sf+pbfSJzvlIs8xNZ5dRjnYBC9UGNEnDPTuLQi+LIVo40c+3pPD1zXWK6YCpMLqakzKlil0xNJqGbEVRlttA==
@@ -2640,6 +2665,15 @@
   dependencies:
     "@angular-devkit/core" "13.2.5"
     "@angular-devkit/schematics" "13.2.5"
+    jsonc-parser "3.0.0"
+
+"@schematics/angular@^13.2.6":
+  version "13.2.6"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-13.2.6.tgz#48f5b6c58d2f26de913873549180122283b22f20"
+  integrity sha512-8NzHMX9+FSgaB0lJYxlTJv9OcBuolwZJqo9M/yX3RPSqSHghA33jWwgVbV551hBJOpbVEePerG1DQkIC99DXKA==
+  dependencies:
+    "@angular-devkit/core" "13.2.6"
+    "@angular-devkit/schematics" "13.2.6"
     jsonc-parser "3.0.0"
 
 "@sinonjs/commons@^1.7.0":
@@ -4957,6 +4991,11 @@ domhandler@^4.2.0, domhandler@^4.3.0:
   integrity sha512-fC0aXNQXqKSFTr2wDNZDhsEYjCiYsDWl3D01kwt25hm1YIPyDGHvvi3rw+PLqHAl/m71MaiF7d5zvBr0p5UB2g==
   dependencies:
     domelementtype "^2.2.0"
+
+domino@^2.1.2:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/domino/-/domino-2.1.6.tgz#fe4ace4310526e5e7b9d12c7de01b7f485a57ffe"
+  integrity sha512-3VdM/SXBZX2omc9JF9nOPCtDaYQ67BGp5CoLpIQlO2KCAPETs8TcDHacF26jXadGbvUteZzRTeos2fhID5+ucQ==
 
 domutils@^2.8.0:
   version "2.8.0"
@@ -10590,6 +10629,11 @@ ws@^8.1.0, ws@^8.2.3:
   version "8.5.0"
   resolved "https://registry.npmjs.org/ws/-/ws-8.5.0.tgz"
   integrity sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
+
+xhr2@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.2.1.tgz#4e73adc4f9cfec9cbd2157f73efdce3a5f108a93"
+  integrity sha512-sID0rrVCqkVNUn8t6xuv9+6FViXjUVXq8H5rWOH2rz9fDNQEd4g0EA2XlcEdJXRz5BMEn4O1pJFdT+z4YHhoWw==
 
 xml-name-validator@^3.0.0:
   version "3.0.0"

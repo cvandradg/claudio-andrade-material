@@ -12,22 +12,28 @@ import { AuthGuard } from '@material-workspace/firestarter2/authGuard';
       { path: '', component: HomePageComponent },
       {
         path: 'login',
-        loadChildren: () => import('@material-workspace/firestarter2/client/user').then(m => m.UserModule)
+        loadChildren: () =>
+          import('@material-workspace/firestarter2/client/user').then(
+            (m) => m.UserModule
+          ),
       },
       {
         path: 'kanban',
         loadChildren: () =>
-          import('@material-workspace/firestarter2/client/kanban').then(m => m.KanbanModule),
-        canActivate: [AuthGuard]
+          import('@material-workspace/firestarter2/client/kanban').then(
+            (m) => m.KanbanModule
+          ),
+        canActivate: [AuthGuard],
       },
       {
         path: 'customers',
-        loadChildren: () => import('@material-workspace/firestarter2/client/customers').then(m => m.CustomersModule)
+        loadChildren: () =>
+          import('@material-workspace/firestarter2/client/customers').then(
+            (m) => m.CustomersModule
+          ),
       },
     ]),
   ],
-  declarations: [
-    HomePageComponent
-  ],
+  declarations: [HomePageComponent],
 })
 export class AppUIModule {}

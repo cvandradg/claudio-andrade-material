@@ -12,14 +12,10 @@ import { MatCardModule } from '@angular/material/card';
     SharedModule,
     MatCardModule,
     RouterModule.forChild([
-      {path: '', pathMatch: 'full', component: ListPageComponent},
-      {path: ':id', pathMatch: 'full', component: DetailPageComponent},
-
+      { path: '', pathMatch: 'full', component: ListPageComponent },
+      { path: ':id', pathMatch: 'full', component: DetailPageComponent },
     ]),
   ],
-  declarations: [
-    ListPageComponent,
-    DetailPageComponent
-  ],
+  declarations: [ListPageComponent, DetailPageComponent],
 })
 export class CustomersModule {}

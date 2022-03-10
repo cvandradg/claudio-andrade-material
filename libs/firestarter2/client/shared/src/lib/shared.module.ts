@@ -9,7 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
-import { MatCardModule, } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -40,7 +40,7 @@ const modules = [
   FormsModule,
   ReactiveFormsModule,
   MatButtonToggleModule,
-  DeleteButtonComponentModule
+  DeleteButtonComponentModule,
 ];
 
 @NgModule({

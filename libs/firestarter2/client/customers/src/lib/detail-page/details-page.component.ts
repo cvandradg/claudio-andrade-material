@@ -7,18 +7,18 @@ import { SeoService } from '../services/seo.service';
 @Component({
   selector: 'material-workspace-details-page',
   templateUrl: './detail-page.component.html',
-  styleUrls: ['./detail-page.component.scss']
+  styleUrls: ['./detail-page.component.scss'],
 })
 export class DetailPageComponent {
-  customerId: any  = '';
+  customerId: any = '';
   customer: Observable<any> | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private db: AngularFirestore,
-    private seo: SeoService,
-    // public data: CustomerDataService
-  ) {}
+    private seo: SeoService
+  ) // public data: CustomerDataService
+  {}
 
   ngOnInit() {
     this.customerId = this.route.snapshot.paramMap.get('id');
@@ -26,7 +26,7 @@ export class DetailPageComponent {
     this.customer = this.db
       .collection('customers')
       .doc<any>(this.customerId)
-      .valueChanges()
+      .valueChanges();
     // this.customer = this.data.getCustomer(this.customerId)
     //   .pipe(
     //     tap((cust:any) =>

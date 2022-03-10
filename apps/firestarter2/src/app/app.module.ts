@@ -32,7 +32,7 @@ import { SharedModule } from '@material-workspace/firestarter2/client/shared';
           ),
       },
     ]),
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     SharedModule,
     FormsModule,
     BrowserAnimationsModule,

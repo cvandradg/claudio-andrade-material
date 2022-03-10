@@ -7,7 +7,7 @@ import { SeoService } from '../services/seo.service';
 @Component({
   selector: 'material-workspace-list-page',
   templateUrl: './list-page.component.html',
-  styleUrls: ['./list-page.component.scss']
+  styleUrls: ['./list-page.component.scss'],
 })
 export class ListPageComponent implements OnInit {
   customers: any;
@@ -17,10 +17,12 @@ export class ListPageComponent implements OnInit {
   ngOnInit() {
     this.seo.generateTags({
       title: 'Customer List',
-      description: 'A list filled with customers'
+      description: 'A list filled with customers',
     });
 
-    this.customers = this.db.collection('customers').valueChanges({ idField: 'id' });
+    this.customers = this.db
+      .collection('customers')
+      .valueChanges({ idField: 'id' });
 
     // this.data.subscribeToCustomers();
   }
