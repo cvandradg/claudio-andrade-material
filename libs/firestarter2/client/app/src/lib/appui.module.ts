@@ -20,6 +20,10 @@ import { AuthGuard } from '@material-workspace/firestarter2/authGuard';
           import('@material-workspace/firestarter2/client/kanban').then(m => m.KanbanModule),
         canActivate: [AuthGuard]
       },
+      {
+        path: 'customers',
+        loadChildren: () => import('@material-workspace/firestarter2/client/customers').then(m => m.CustomersModule)
+      },
     ]),
   ],
   declarations: [

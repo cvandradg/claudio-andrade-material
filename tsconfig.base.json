@@ -21,6 +21,9 @@
       "@material-workspace/firestarter2/client/app": [
         "libs/firestarter2/client/app/src/index.ts"
       ],
+      "@material-workspace/firestarter2/client/customers": [
+        "libs/firestarter2/client/customers/src/index.ts"
+      ],
       "@material-workspace/firestarter2/client/kanban": [
         "libs/firestarter2/client/kanban/src/index.ts"
       ],
@@ -29,6 +32,9 @@
       ],
       "@material-workspace/firestarter2/client/user": [
         "libs/firestarter2/client/user/src/index.ts"
+      ],
+      "@material-workspace/services/seo": [
+        "libs/firestarter2/client/services/seo.service.ts"
       ]
     }
   },
