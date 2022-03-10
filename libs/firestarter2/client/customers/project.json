@@ -6,9 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/firestarter2/client/customers"
-      ],
+      "outputs": ["coverage/libs/firestarter2/client/customers"],
       "options": {
         "jestConfig": "libs/firestarter2/client/customers/jest.config.js",
         "passWithNoTests": true

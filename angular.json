@@ -1,7 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "abfood-backend": "apps/abfood-backend",
     "firestarter2": "apps/firestarter2",
     "firestarter2-client-app": "libs/firestarter2/client/app",
     "firestarter2-client-customers": "libs/firestarter2/client/customers",
