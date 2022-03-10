@@ -18,6 +18,7 @@ import { ShellComponent } from './shell/shell.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { DeleteButtonComponentModule } from './delete-button/delete-button.component';
 
 const components: any = [ShellComponent];
 
@@ -39,6 +40,7 @@ const modules = [
   FormsModule,
   ReactiveFormsModule,
   MatButtonToggleModule,
+  DeleteButtonComponentModule
 ];
 
 @NgModule({
