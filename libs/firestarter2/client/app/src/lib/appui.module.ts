@@ -25,6 +25,14 @@ import { AuthGuard } from '@material-workspace/firestarter2/authGuard';
           ),
         canActivate: [AuthGuard],
       },
+      {
+        path: 'inventory',
+        loadChildren: () =>
+          import('@material-workspace/firestarter2/client/inventory').then(
+            (m) => m.InventoryModule
+          ),
+        canActivate: [AuthGuard],
+      },
     ]),
   ],
   declarations: [HomePageComponent],

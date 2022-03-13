@@ -15,14 +15,26 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@material-workspace/board/dialogs/*": [
+        "libs/firestarter2/client/kanban/src/lib/dialogs/*"
+      ],
+      "@material-workspace/client/models/*": [
+        "libs/firestarter2/client/models/*"
+      ],
       "@material-workspace/firestarter2/authGuard": [
         "libs/firestarter2/client/user/src/lib/auth.guard.ts"
       ],
       "@material-workspace/firestarter2/client/app": [
         "libs/firestarter2/client/app/src/index.ts"
       ],
+      "@material-workspace/firestarter2/client/inventory": [
+        "libs/firestarter2/client/inventory/src/index.ts"
+      ],
       "@material-workspace/firestarter2/client/kanban": [
         "libs/firestarter2/client/kanban/src/index.ts"
+      ],
+      "@material-workspace/firestarter2/client/services": [
+        "libs/firestarter2/client/services/src/index.ts"
       ],
       "@material-workspace/firestarter2/client/shared": [
         "libs/firestarter2/client/shared/src/index.ts"
@@ -30,8 +42,8 @@
       "@material-workspace/firestarter2/client/user": [
         "libs/firestarter2/client/user/src/index.ts"
       ],
-      "@material-workspace/services/seo": [
-        "libs/firestarter2/client/services/seo.service.ts"
+      "@material-workspace/services/*": [
+        "libs/firestarter2/client/services/src/lib/*"
       ]
     }
   },

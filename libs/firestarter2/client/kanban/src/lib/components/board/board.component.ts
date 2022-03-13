@@ -1,17 +1,21 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Task } from '@material-workspace/client/models/board.model';
+import { BoardService } from '@material-workspace/services/board.service';
+import { InventoryService } from '@material-workspace/services/inventory.service';
 import { TaskDialogComponent } from '../../dialogs/task-dialog/task-dialog.component';
-import { Task } from '../../models/board.model';
-import { BoardService } from '../../services/board/board.service';
 
 @Component({
   selector: 'material-workspace-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent {
-  @Input() board:any;
+  @Input() board: any;
+  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
+
+  isDialogOpen = false;
 
   taskDrop(event: any) {
     moveItemInArray(this.board.tasks, event.previousIndex, event.currentIndex);
@@ -24,15 +28,15 @@ export class BoardComponent {
       width: '500px',
       data: task
         ? { task: { ...task }, isNew: false, boardId: this.board.id, idx }
-        : { task: newTask, isNew: true }
+        : { task: newTask, isNew: true },
     });
 
-    dialogRef.afterClosed().subscribe((result:any) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
         if (result.isNew) {
           this.boardService.updateTasks(this.board.id, [
             ...this.board.tasks,
-            result.task
+            result.task,
           ]);
         } else {
           const update = this.board.tasks;

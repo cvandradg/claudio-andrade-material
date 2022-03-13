@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DeleteButtonComponentModule } from './delete-button/delete-button.component';
+import { ServicesModule } from '@material-workspace/firestarter2/client/services';
 
 const components: any = [ShellComponent];
 
@@ -47,5 +48,6 @@ const modules = [
   declarations: [...components],
   imports: [...modules],
   exports: [...modules, ...components],
+  providers: [ServicesModule],
 })
 export class SharedModule {}
