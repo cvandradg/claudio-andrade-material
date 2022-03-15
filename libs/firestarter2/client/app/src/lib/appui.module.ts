@@ -33,6 +33,14 @@ import { AuthGuard } from '@material-workspace/firestarter2/authGuard';
           ),
         canActivate: [AuthGuard],
       },
+      {
+        path: 'products',
+        loadChildren: () =>
+          import('@material-workspace/firestarter2/client/products').then(
+            (m) => m.ProductsModule
+          ),
+        canActivate: [AuthGuard],
+      },
     ]),
   ],
   declarations: [HomePageComponent],

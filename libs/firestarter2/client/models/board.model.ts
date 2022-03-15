@@ -1,3 +1,6 @@
+import * as uuid from 'uuid';
+import { Ingredient } from '@material-workspace/client/models/ingredient.model';
+
 export interface Board {
   id?: string;
   title?: string;
@@ -6,6 +9,9 @@ export interface Board {
 }
 
 export interface Task {
-  description?: string;
+  uuid: any;
+  name?: string;
+  price: 0;
   label?: 'purple' | 'blue' | 'green' | 'yellow' | 'red' | 'gray';
+  ingredients: Ingredient[];
 }

@@ -1,0 +1,10 @@
+<button
+  mat-button
+  color="accent"
+  (click)="canSell ? sellTask() : prepareForSell()"
+>
+  <mat-icon>checklist_rtl</mat-icon>
+  <span *ngIf="canSell">confirm</span>
+</button>
+
+<button *ngIf="canSell" mat-button (click)="cancel()">Cancel</button>

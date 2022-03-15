@@ -34,11 +34,11 @@ export class BoardsListComponent implements OnInit, OnDestroy {
       .getUserBoards()
       .subscribe((boards) => (this.boards = boards));
 
-    this.inventoryService.createBoard({
-      name: 'prueba 1',
-      quantity: 1,
-      unit: enumUnit.gram,
-    });
+    // this.inventoryService.createBoard({
+    //   name: 'fresa',
+    //   quantity: 1000,
+    //   unit: enumUnit.kiloGram,
+    // });
 
     this.sharedDataService.currentMessage.subscribe(
       (isOpen) => isOpen && this.openBoardDialog()

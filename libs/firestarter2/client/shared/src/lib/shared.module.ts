@@ -20,6 +20,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DeleteButtonComponentModule } from './delete-button/delete-button.component';
 import { ServicesModule } from '@material-workspace/firestarter2/client/services';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SoldButtonComponentModule } from './sold-button/sold-button.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const components: any = [ShellComponent];
 
@@ -36,12 +44,20 @@ const modules = [
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
+  MatSortModule,
   MatSnackBarModule,
+  MatTableModule,
   RouterModule,
   FormsModule,
   ReactiveFormsModule,
   MatButtonToggleModule,
   DeleteButtonComponentModule,
+  SoldButtonComponentModule,
+  MatOptionModule,
+  MatSelectModule,
+  MatAutocompleteModule,
+  MatExpansionModule,
+  DragDropModule,
 ];
 
 @NgModule({

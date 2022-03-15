@@ -3,8 +3,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from '@material-workspace/client/models/board.model';
 import { BoardService } from '@material-workspace/services/board.service';
-import { InventoryService } from '@material-workspace/services/inventory.service';
 import { TaskDialogComponent } from '../../dialogs/task-dialog/task-dialog.component';
+import * as uuid from 'uuid';
+import { SellsService } from '@material-workspace/services/sells.service';
 
 @Component({
   selector: 'material-workspace-board',
@@ -23,7 +24,14 @@ export class BoardComponent {
   }
 
   openDialog(task?: Task, idx?: number): void {
-    const newTask = { label: 'purple' };
+    const newTask = {
+      name: '',
+      label: 'purple',
+      price: 0,
+      uuid: uuid.v4(),
+      ingredients: [],
+    };
+
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '500px',
       data: task
@@ -40,7 +48,7 @@ export class BoardComponent {
           ]);
         } else {
           const update = this.board.tasks;
-          update.splice(result.idx, 1, result.task);
+          const usplice = update.splice(result.idx, 1, result.task);
           this.boardService.updateTasks(this.board.id, this.board.tasks);
         }
       }
@@ -51,5 +59,21 @@ export class BoardComponent {
     this.boardService.deleteBoard(this.board.id);
   }
 
-  constructor(private boardService: BoardService, private dialog: MatDialog) {}
+  handleTaskSold() {
+    console.log('board id,', this.board.id);
+    this.sellsService.moveTask(this.board.id);
+  }
+
+  getPriceSum(tasks: Task[]): any {
+    return tasks.reduce(
+      (previousValue, currentValue) => currentValue.price + previousValue,
+      0
+    );
+  }
+
+  constructor(
+    private boardService: BoardService,
+    private dialog: MatDialog,
+    private sellsService: SellsService
+  ) {}
 }

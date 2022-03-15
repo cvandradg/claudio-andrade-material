@@ -47,14 +47,22 @@
         <a
           *ngIf="afAuth.authState | async as user"
           mat-button
-          routerLink="/kanban"
-          >🍱 Kanban Demo</a
+          (click)="openProductListDialog()"
+          >🔑 Add Product</a
         >
         <a
           *ngIf="afAuth.authState | async as user"
           mat-button
+          routerLink="/kanban"
+          >🍱 Kanban Demo</a
+        >
+        <a
+          *ngIf="
+            currentUrl === '/inventory' && (afAuth.authState | async) as users
+          "
+          mat-button
           routerLink="/customers"
-          >⚡ SSR Demo</a
+          >⚡ Agregar a inventario</a
         >
         <a mat-button routerLink="/login">🔑 Login</a>
       </div>
@@ -70,13 +78,12 @@
       </button>
 
       <mat-menu #menu="matMenu">
-        <a mat-menu-item href="https://fireship.page.link/slack">
-          <button mat-menu-item>Baikal oilfish</button>
+        <a mat-menu-item>
+          <button routerLink="/inventory" mat-menu-item>Inventario</button>
         </a>
-        <button routerLink="/inventory" mat-menu-item >Inventario</button>
-        <button mat-menu-item>Baikal oilfish</button>
-        <button mat-menu-item>Baikal oilfish</button>
-        <button mat-menu-item>Baikal oilfish</button>
+        <a mat-menu-item>
+          <button routerLink="/products" mat-menu-item>Productos</button>
+        </a>
       </mat-menu>
     </mat-toolbar>
 

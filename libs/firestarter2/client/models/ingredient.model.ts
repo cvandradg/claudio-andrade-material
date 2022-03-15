@@ -2,7 +2,8 @@ export interface Ingredient {
   name: string;
   quantity: number;
   unit: enumUnit;
-  id?: string;
+  uuid?: string;
+  label?: string;
 }
 
 export enum enumUnit {

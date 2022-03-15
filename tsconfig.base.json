@@ -33,6 +33,9 @@
       "@material-workspace/firestarter2/client/kanban": [
         "libs/firestarter2/client/kanban/src/index.ts"
       ],
+      "@material-workspace/firestarter2/client/products": [
+        "libs/firestarter2/client/products/src/index.ts"
+      ],
       "@material-workspace/firestarter2/client/services": [
         "libs/firestarter2/client/services/src/index.ts"
       ],

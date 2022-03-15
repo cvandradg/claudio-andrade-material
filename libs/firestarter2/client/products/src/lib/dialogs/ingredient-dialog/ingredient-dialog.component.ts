@@ -1,12 +1,16 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit, NgModule, Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { firstValueFrom, map, Observable, startWith, tap } from 'rxjs';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { BoardService } from '@material-workspace/services/board.service';
 import { SellsService } from '@material-workspace/services/sells.service';
-import { map, Observable, startWith, tap } from 'rxjs';
+import { BoardService } from '@material-workspace/services/board.service';
+import { TaskDialogComponent } from '@material-workspace/board/dialogs/task-dialog/task-dialog.component';
+import { FormControl } from '@angular/forms';
+import { SharedModule } from '@material-workspace/firestarter2/client/shared';
+import { InventoryService } from '@material-workspace/services/inventory.service';
 
 @Component({
-  selector: 'material-workspace-task-dialog',
+  selector: 'material-workspace-ingredient-dialog',
   styleUrls: ['../dialog.scss'],
   template: `
     <h1 mat-dialog-title>Task</h1>
@@ -37,7 +41,7 @@ import { map, Observable, startWith, tap } from 'rxjs';
       <br />
       <mat-button-toggle-group
         #group="matButtonToggleGroup"
-        [(ngModel)]="data.task.label"
+        [(ngModel)]="data.ingredients.label"
       >
         <mat-button-toggle *ngFor="let opt of labelOptions" [value]="opt">
           <mat-icon cdkFocusInitial [ngClass]="opt">{{
@@ -61,70 +65,43 @@ import { map, Observable, startWith, tap } from 'rxjs';
     </div>
   `,
 })
-export class TaskDialogComponent implements OnInit {
+export class IngredientDialogComponent implements OnInit {
   labelOptions = ['purple', 'blue', 'green', 'yellow', 'red', 'gray'];
   myControl = new FormControl();
-  options: any[] = [
-    {
-      ingredients: [
-        {
-          name: 'limon',
-          quantity: 1,
-          unit: 'kg',
-        },
-        {
-          name: 'sandia',
-          quantity: 2,
-          unit: 'kg',
-        },
-        {
-          name: 'mora',
-          quantity: 3,
-          unit: 'kg',
-        },
-        {
-          name: 'avena',
-          quantity: 4,
-          unit: 'kg',
-        },
-      ],
-      label: 'green',
-      price: 5000,
-      name: 'Batido de limon',
-    },
-    {
-      ingredients: [],
-      label: 'red',
-      price: 3000,
-      name: 'Batido de fresa',
-    },
-    {
-      ingredients: [],
-      label: 'purple',
-      price: 1000,
-      name: 'Batido de mora',
-    },
-  ];
+
+  options: any[] = [];
 
   filteredOptions: Observable<any[]> | undefined;
+  ingredients: any[] = [];
 
   constructor(
-    public dialogRef: MatDialogRef<TaskDialogComponent>,
+    public dialogRef: MatDialogRef<IngredientDialogComponent>,
     private boardService: BoardService,
     private sellsService: SellsService,
+    private inventoryService: InventoryService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => (typeof value === 'string' ? value : value.name)),
-      map((name) => (name ? this._filter(name) : this.options.slice()))
-    );
+  async ngOnInit() {
+
+    console.log('data,',this.data)
+    
+    await firstValueFrom(this.inventoryService.getUserBoards())
+      .then((x) => (this.options = x))
+      .then((x) => {
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+          startWith(''),
+          map((value) => (typeof value === 'string' ? value : value.name)),
+          map((name) => (name ? this._filter(name) : this.options.slice())),
+          tap((x) => console.log('tiene algo?,', this.options))
+        );
+
+        return;
+      });
   }
 
   getPosts(value: any) {
-    this.data.task = value;
+    this.data.ingredients = value;
   }
 
   displayFn(value: any): string {
@@ -148,3 +125,10 @@ export class TaskDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 }
+
+@NgModule({
+  imports: [CommonModule, SharedModule],
+  declarations: [IngredientDialogComponent],
+  exports: [IngredientDialogComponent],
+})
+export class IngredientDialogComponentModule {}
