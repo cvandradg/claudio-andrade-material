@@ -10,6 +10,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SharedModule } from '@material-workspace/firestarter2/client/shared';
+import { ServicesModule } from '@material-workspace/firestarter2/client/services';
 
 @NgModule({
   imports: [
@@ -27,5 +28,6 @@ import { SharedModule } from '@material-workspace/firestarter2/client/shared';
     BoardDialogComponent,
     TaskDialogComponent,
   ],
+  providers: [ServicesModule],
 })
 export class KanbanModule {}

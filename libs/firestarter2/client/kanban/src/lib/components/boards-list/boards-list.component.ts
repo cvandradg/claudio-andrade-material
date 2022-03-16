@@ -1,27 +1,48 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { InventoryService } from '@material-workspace/services/inventory.service';
+import { enumUnit } from '@material-workspace/client/models/ingredient.model';
 import { Subscription } from 'rxjs';
 import { BoardDialogComponent } from '../../dialogs/board-dialog/board-dialog.component';
-import { Board } from '../../models/board.model';
-import { BoardService } from '../../services/board/board.service';
+
+import { Board } from '@material-workspace/client/models/board.model';
+import { BoardService } from '@material-workspace/services/board.service';
+import { ShareDataService } from '@material-workspace/services/share-data.service';
 
 @Component({
   selector: 'material-workspace-boards-list',
   templateUrl: './boards-list.component.html',
-  styleUrls: ['./boards-list.component.scss']
+  styleUrls: ['./boards-list.component.scss'],
 })
-export class BoardsListComponent implements OnDestroy {
-
+export class BoardsListComponent implements OnInit, OnDestroy {
   boards: Board[] = [];
   sub: Subscription | undefined;
 
-  constructor(public boardService: BoardService, public dialog: MatDialog) {}
+  isDialogOpen = false;
+  // enumUnit: enumUnit | undefined;
+
+  constructor(
+    public boardService: BoardService,
+    public dialog: MatDialog,
+    private inventoryService: InventoryService,
+    private sharedDataService: ShareDataService
+  ) {}
 
   ngOnInit() {
     this.sub = this.boardService
       .getUserBoards()
-      .subscribe(boards => (this.boards = boards));
+      .subscribe((boards) => (this.boards = boards));
+
+    // this.inventoryService.createBoard({
+    //   name: 'fresa',
+    //   quantity: 1000,
+    //   unit: enumUnit.kiloGram,
+    // });
+
+    this.sharedDataService.currentMessage.subscribe(
+      (isOpen) => isOpen && this.openBoardDialog()
+    ); //<= Always get current value!
   }
 
   drop(event: any) {
@@ -32,14 +53,14 @@ export class BoardsListComponent implements OnDestroy {
   openBoardDialog(): void {
     const dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '400px',
-      data: {  }
+      data: {},
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.boardService.createBoard({
           title: result,
-          priority: this.boards.length
+          priority: this.boards.length,
         });
       }
     });

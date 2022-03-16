@@ -38,9 +38,36 @@
 
       <span class="fill-space"></span>
       <div *ngIf="(isHandset$ | async) === false">
-        <a mat-button routerLink="/kanban">🍱 Kanban Demo</a>
-        <a mat-button routerLink="/customers">⚡ SSR Demo</a>
-
+        <a
+          *ngIf="
+            currentUrl === '/kanban' && (afAuth.authState | async) as users
+          "
+          mat-button
+          (click)="openBoardDialog()"
+          >🔑 Create Board</a
+        >
+        <a
+          *ngIf="
+            currentUrl === '/products' && (afAuth.authState | async) as users
+          "
+          mat-button
+          (click)="openProductListDialog()"
+          >🔑 Add Product</a
+        >
+        <a
+          *ngIf="afAuth.authState | async as user"
+          mat-button
+          routerLink="/kanban"
+          >🍱 Kanban Demo</a
+        >
+        <a
+          *ngIf="
+            currentUrl === '/inventory' && (afAuth.authState | async) as users
+          "
+          mat-button
+          routerLink="/customers"
+          >⚡ Agregar a inventario</a
+        >
         <a mat-button routerLink="/login">🔑 Login</a>
       </div>
 
@@ -55,9 +82,11 @@
       </button>
 
       <mat-menu #menu="matMenu">
-        <a mat-menu-item href="https://fireship.page.link/slack">
-          <i>💬</i>
-          <span>Chat on Slack</span>
+        <a mat-menu-item>
+          <button routerLink="/inventory" mat-menu-item>Inventario</button>
+        </a>
+        <a mat-menu-item>
+          <button routerLink="/products" mat-menu-item>Productos</button>
         </a>
       </mat-menu>
     </mat-toolbar>

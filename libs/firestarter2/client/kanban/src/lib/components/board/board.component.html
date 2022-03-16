@@ -22,15 +22,26 @@
       *ngFor="let task of board.tasks; let i = index"
       (click)="openDialog(task, i)"
     >
-      <mat-card [ngClass]="task.label"> {{ task.description }} </mat-card>
+      <mat-card [ngClass]="task.label" class="flex">
+        <span>{{ task.title }} </span>
+        <span> {{ task.price }}</span>
+      </mat-card>
     </div>
 
-    <button mat-stroked-button (click)="openDialog()">
-      <mat-icon>add</mat-icon>
-    </button>
+    <div class="flex">
+      <div>
+        <material-workspace-delete-button
+          (delete)="handleDelete()"
+        ></material-workspace-delete-button>
+        <button mat-stroked-button (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <material-workspace-sold-button (sold)="handleTaskSold()">
+          <mat-icon>checklist_rtl</mat-icon>
+        </material-workspace-sold-button>
+      </div>
 
-    <material-workspace-delete-button
-      (delete)="handleDelete()"
-    ></material-workspace-delete-button>
+      Total: {{ getPriceSum(board.tasks) }}
+    </div>
   </div>
 </mat-card>

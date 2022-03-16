@@ -4,18 +4,11 @@
   class="boards"
   (cdkDropListDropped)="drop($event)"
 >
-  <material-workspace-board cdkDrag *ngFor="let board of boards" [board]="board">
+  <material-workspace-board
+    cdkDrag
+    *ngFor="let board of boards"
+    [board]="board"
+  >
     <mat-icon cdkDragHandle class="handle">drag_indicator</mat-icon>
   </material-workspace-board>
-
-  <div class="board-button">
-    <button
-      mat-raised-button
-      color="accent"
-      cdkDragDisabled
-      (click)="openBoardDialog()"
-    >
-      New Board
-    </button>
-  </div>
 </div>
