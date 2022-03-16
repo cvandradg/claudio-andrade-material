@@ -2,6 +2,7 @@
   width: auto;
   padding: 24px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   overflow-x: scroll;
   &::-webkit-scrollbar {

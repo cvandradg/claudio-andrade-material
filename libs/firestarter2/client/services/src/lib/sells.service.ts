@@ -54,11 +54,7 @@ export class SellsService {
       })
     );
 
-    // await firstValueFrom(currentBoard.subscribe(x => console.log(x)))
     await firstValueFrom(currentBoard).then((x) => this.parseIngredients(x));
-    // .then((x:any) => console.log([].concat([], ...x)))
-    // .then((x: any) => this.storeSell({ ...x }))
-    // .then((x: any) => this.deleteBoard(boardId));
 
     return;
   }

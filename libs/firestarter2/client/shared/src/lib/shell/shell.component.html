@@ -39,13 +39,17 @@
       <span class="fill-space"></span>
       <div *ngIf="(isHandset$ | async) === false">
         <a
-          *ngIf="afAuth.authState | async as user"
+          *ngIf="
+            currentUrl === '/kanban' && (afAuth.authState | async) as users
+          "
           mat-button
           (click)="openBoardDialog()"
           >🔑 Create Board</a
         >
         <a
-          *ngIf="afAuth.authState | async as user"
+          *ngIf="
+            currentUrl === '/products' && (afAuth.authState | async) as users
+          "
           mat-button
           (click)="openProductListDialog()"
           >🔑 Add Product</a

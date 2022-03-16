@@ -11,12 +11,15 @@ import { SharedModule } from '@material-workspace/firestarter2/client/shared';
     <div mat-dialog-content>
       <p>Como deberia de llamarse el producto?</p>
       <mat-form-field>
-        <input placeholder="title" matInput [(ngModel)]="data.title" />
+        <input placeholder="titulo" matInput [(ngModel)]="data.title" />
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="precio" matInput [(ngModel)]="data.price" />
       </mat-form-field>
     </div>
     <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">Cancel</button>
-      <button mat-button [mat-dialog-close]="data.title" cdkFocusInitial>
+      <button mat-button [mat-dialog-close]="data" cdkFocusInitial>
         Create
       </button>
     </div>

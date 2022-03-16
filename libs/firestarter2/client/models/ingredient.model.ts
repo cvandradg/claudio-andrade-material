@@ -12,3 +12,10 @@ export enum enumUnit {
   miliLiter = 'ml',
   kiloGram = 'kg',
 }
+
+export const IngredientLabelMapping: Record<enumUnit, string> = {
+  [enumUnit.gram]: 'g',
+  [enumUnit.liter]: 'L',
+  [enumUnit.miliLiter]: 'mL',
+  [enumUnit.kiloGram]: 'Kg',
+};

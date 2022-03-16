@@ -2,8 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BoardService } from '@material-workspace/services/board.service';
+import { ProductService } from '@material-workspace/services/product.service';
 import { SellsService } from '@material-workspace/services/sells.service';
-import { map, Observable, startWith, tap } from 'rxjs';
+import { firstValueFrom, map, Observable, startWith, tap } from 'rxjs';
 
 @Component({
   selector: 'material-workspace-task-dialog',
@@ -30,7 +31,7 @@ import { map, Observable, startWith, tap } from 'rxjs';
             *ngFor="let option of filteredOptions | async"
             [value]="option"
           >
-            {{ option.name }}
+            {{ option.title }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -64,47 +65,8 @@ import { map, Observable, startWith, tap } from 'rxjs';
 export class TaskDialogComponent implements OnInit {
   labelOptions = ['purple', 'blue', 'green', 'yellow', 'red', 'gray'];
   myControl = new FormControl();
-  options: any[] = [
-    {
-      ingredients: [
-        {
-          name: 'limon',
-          quantity: 1,
-          unit: 'kg',
-        },
-        {
-          name: 'sandia',
-          quantity: 2,
-          unit: 'kg',
-        },
-        {
-          name: 'mora',
-          quantity: 3,
-          unit: 'kg',
-        },
-        {
-          name: 'avena',
-          quantity: 4,
-          unit: 'kg',
-        },
-      ],
-      label: 'green',
-      price: 5000,
-      name: 'Batido de limon',
-    },
-    {
-      ingredients: [],
-      label: 'red',
-      price: 3000,
-      name: 'Batido de fresa',
-    },
-    {
-      ingredients: [],
-      label: 'purple',
-      price: 1000,
-      name: 'Batido de mora',
-    },
-  ];
+
+  options: any[] = [];
 
   filteredOptions: Observable<any[]> | undefined;
 
@@ -112,30 +74,41 @@ export class TaskDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<TaskDialogComponent>,
     private boardService: BoardService,
     private sellsService: SellsService,
+    private productService: ProductService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => (typeof value === 'string' ? value : value.name)),
-      map((name) => (name ? this._filter(name) : this.options.slice()))
-    );
+    firstValueFrom(this.productService.getUserProducts())
+      .then((products) => {
+        this.options = products;
+        return this.options;
+      })
+      .then(() => {
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+          startWith(''),
+          map((value) => (typeof value === 'string' ? value : value.title)),
+          map((title) => (title ? this._filter(title) : this.options.slice()))
+        );
+
+        return;
+      });
   }
 
   getPosts(value: any) {
     this.data.task = value;
+    console.log('data,', this.data.task);
   }
 
   displayFn(value: any): string {
-    return value && value.name ? value.name : '';
+    return value && value.title ? value.title : '';
   }
 
-  private _filter(name: string): any[] {
-    const filterValue = name.toLowerCase();
+  private _filter(title: string): any[] {
+    const filterValue = title.toLowerCase();
 
     return this.options.filter((option) =>
-      option.name.toLowerCase().includes(filterValue)
+      option.title.toLowerCase().includes(filterValue)
     );
   }
 

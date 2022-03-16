@@ -40,6 +40,8 @@ export class BoardComponent {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
+      console.log('result,', result);
+
       if (result) {
         if (result.isNew) {
           this.boardService.updateTasks(this.board.id, [
@@ -60,7 +62,6 @@ export class BoardComponent {
   }
 
   handleTaskSold() {
-    console.log('board id,', this.board.id);
     this.sellsService.moveTask(this.board.id);
   }
 

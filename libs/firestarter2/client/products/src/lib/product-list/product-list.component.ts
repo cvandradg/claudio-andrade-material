@@ -55,14 +55,21 @@ export class ProductListComponent {
   openProductDialog(): void {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
       width: '400px',
-      data: {},
+      data: {
+        title: '',
+        price: 1500,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      console.log('result,', result);
+
       if (result) {
         this.productService.createBoard({
-          title: result,
+          title: result.title,
           priority: this.boards.length,
+          label: 'purple',
+          price: result.price,
         });
       }
     });

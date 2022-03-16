@@ -19,12 +19,15 @@
     <div
       class="inner-card"
       cdkDrag
-      *ngFor="let task of product.ingredients; let i = index"
-      (click)="openDialog(task, i)"
+      *ngFor="let product of product.ingredients; let i = index"
+      (click)="openDialog(product, i)"
     >
-      <mat-card [ngClass]="task.label" class="flex">
-        <span>{{ task.name }} </span>
-        <span> {{ task.price }}</span>
+      <mat-card [ngClass]="product.label" class="flex">
+        <span>{{ product.name }} </span>
+        <span>
+          <span> {{ product.quantity }}</span>
+          <span> {{ product.unit }}</span>
+        </span>
       </mat-card>
     </div>
 
@@ -40,6 +43,8 @@
           <mat-icon>checklist_rtl</mat-icon>
         </material-workspace-sold-button>
       </div>
+
+      Precio: {{ product.price }}
     </div>
   </div>
 </mat-card>

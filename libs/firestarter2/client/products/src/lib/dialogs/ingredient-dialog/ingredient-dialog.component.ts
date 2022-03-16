@@ -8,6 +8,11 @@ import { TaskDialogComponent } from '@material-workspace/board/dialogs/task-dial
 import { FormControl } from '@angular/forms';
 import { SharedModule } from '@material-workspace/firestarter2/client/shared';
 import { InventoryService } from '@material-workspace/services/inventory.service';
+import {
+  enumUnit,
+  Ingredient,
+  IngredientLabelMapping,
+} from '@material-workspace/client/models/ingredient.model';
 
 @Component({
   selector: 'material-workspace-ingredient-dialog',
@@ -39,6 +44,17 @@ import { InventoryService } from '@material-workspace/services/inventory.service
         </mat-autocomplete>
       </mat-form-field>
       <br />
+      <mat-form-field>
+        <input placeholder="Cantidad" matInput [formControl]="myControl2" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Unidad</mat-label>
+        <mat-select (selectionChange)="onToggleChange($event.value)">
+          <mat-option *ngFor="let unit of unitTypes" [value]="unit">
+            {{ unit }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <mat-button-toggle-group
         #group="matButtonToggleGroup"
         [(ngModel)]="data.ingredients.label"
@@ -68,11 +84,17 @@ import { InventoryService } from '@material-workspace/services/inventory.service
 export class IngredientDialogComponent implements OnInit {
   labelOptions = ['purple', 'blue', 'green', 'yellow', 'red', 'gray'];
   myControl = new FormControl();
+  myControl2 = new FormControl();
+  myControl3 = new FormControl();
+
+  selected: any;
+
+  public IngredientLabelMapping = IngredientLabelMapping;
+  public unitTypes = Object.values(enumUnit);
 
   options: any[] = [];
-
   filteredOptions: Observable<any[]> | undefined;
-  ingredients: any[] = [];
+  ingredients: Ingredient[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<IngredientDialogComponent>,
@@ -83,25 +105,34 @@ export class IngredientDialogComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-
-    console.log('data,',this.data)
-    
     await firstValueFrom(this.inventoryService.getUserBoards())
-      .then((x) => (this.options = x))
-      .then((x) => {
+      .then((ingredients) => (this.options = ingredients))
+      .then(() => {
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
           map((value) => (typeof value === 'string' ? value : value.name)),
-          map((name) => (name ? this._filter(name) : this.options.slice())),
-          tap((x) => console.log('tiene algo?,', this.options))
+          map((name) => (name ? this._filter(name) : this.options.slice()))
         );
 
         return;
       });
+
+    this.myControl2.valueChanges.subscribe(
+      (quantity) => (this.data.ingredients.quantity = quantity)
+    );
   }
 
-  getPosts(value: any) {
-    this.data.ingredients = value;
+  getPosts({ name, id, uid, uuid }: any) {
+    this.data.ingredients.name = name;
+    this.data.ingredients.id = id;
+    this.data.ingredients.uid = uid;
+    this.data.ingredients.uuid = uuid;
+
+    console.log('data selected2,', this.data.ingredients);
+  }
+
+  onToggleChange($event: any) {
+    this.data.ingredients.unit = $event;
   }
 
   displayFn(value: any): string {

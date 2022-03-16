@@ -70,7 +70,10 @@ export class ProductService {
    * Updates the tasks on board
    */
   updateProducts(productId: string, ingredients: Task[]) {
-    return this.db.collection('products').doc(productId).update({ ingredients });
+    return this.db
+      .collection('products')
+      .doc(productId)
+      .update({ ingredients });
   }
 
   /**

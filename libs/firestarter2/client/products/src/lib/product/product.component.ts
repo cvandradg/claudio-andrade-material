@@ -16,7 +16,10 @@ import { moveItemInArray } from '@angular/cdk/drag-drop';
 import * as uuid from 'uuid';
 import { IngredientDialogComponent } from '../dialogs/ingredient-dialog/ingredient-dialog.component';
 import { ProductService } from '@material-workspace/services/product.service';
-import { Ingredient } from '@material-workspace/client/models/ingredient.model';
+import {
+  enumUnit,
+  Ingredient,
+} from '@material-workspace/client/models/ingredient.model';
 
 @Component({
   selector: 'material-workspace-product',
@@ -42,13 +45,12 @@ export class ProductComponent {
   }
 
   openDialog(ingredient?: Ingredient, idx?: number): void {
-    const newProduct = {
+    const newIngredient = {
       name: '',
       label: 'purple',
-      price: 0,
       quantity: 0,
       uuid: uuid.v4(),
-      ingredients: [],
+      unit: enumUnit,
     };
 
     const dialogRef = this.dialog.open(IngredientDialogComponent, {
@@ -60,17 +62,12 @@ export class ProductComponent {
             productId: this.product.id,
             idx,
           }
-        : { ingredients: newProduct, isNew: true },
+        : { ingredients: newIngredient, isNew: true },
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-
-      console.log('result,',result)
-      console.log('product id,',this.product.id)
-
       if (result) {
         if (result.isNew) {
-          // console.log('board tasks,', result)
           this.productService.updateProducts(this.product.id, [
             ...this.product.ingredients,
             result.ingredients,
@@ -92,7 +89,6 @@ export class ProductComponent {
   }
 
   handleTaskSold() {
-    console.log('board id,', this.product.id);
     this.sellsService.moveTask(this.product.id);
   }
 

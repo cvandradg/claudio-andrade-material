@@ -12,10 +12,6 @@ import { Task } from '@material-workspace/client/models/board.model';
   providedIn: 'root',
 })
 export class InventoryService {
-  print() {
-    console.log('hola');
-  }
-
   ////////////////////////////////////////////////////////////////
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {}
@@ -93,8 +89,6 @@ export class InventoryService {
    * updateIngredientAmount
    */
   updateIngredientAmount(ingredient: any, name: string, quantity: number) {
-    console.log('ingredientId,', ingredient);
-
     return this.db
       .collection('inventory')
       .doc(ingredient.id)
